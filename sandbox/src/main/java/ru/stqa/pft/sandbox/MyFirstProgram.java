@@ -6,14 +6,11 @@ public class MyFirstProgram {
 
     public static void main(String[] args) {
 
-        Point p1 = new Point(2,4);
-        Point p2 = new Point(8,6);
-        MyPoint s = new MyPoint();
+        MyPoint p1 = new MyPoint(2, 4);
+        MyPoint p2 = new MyPoint(8, 6);
 
-        System.out.printf("Расстояние между точкой ("+p1.getX()+", "+p1.getY()+") и точкой ("+p2.getX()+", "+p2.getY()+") в двумерной плоскости ранво " + s.distance(p1,p2));
+        System.out.printf("Расстояние между точкой (" + p1.x + ", " + p1.y + ") и точкой (" + p2.x + ", " + p2.y + ") в двумерной плоскости ранво " + p1.distance(p2));
     }
-
-
 
 
 }
