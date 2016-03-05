@@ -2,7 +2,7 @@ package ru.stqa.pft.addressbook.helpers;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
+
 
 /**
  * Created by oleg on 28.02.16.

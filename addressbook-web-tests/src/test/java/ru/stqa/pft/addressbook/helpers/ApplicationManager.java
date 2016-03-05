@@ -1,6 +1,5 @@
 package ru.stqa.pft.addressbook.helpers;
 
-import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -26,14 +25,6 @@ public class ApplicationManager {
     }
 
 
-    public static boolean isAlertPresent(FirefoxDriver wd) {
-        try {
-            wd.switchTo().alert();
-            return true;
-        } catch (NoAlertPresentException e) {
-            return false;
-        }
-    }
 
 
     public void stop() {
@@ -50,7 +41,7 @@ public class ApplicationManager {
             wd = new InternetExplorerDriver();
         }
 
-        wd.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
+        wd.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
         wd.get("http://localhost/addressbook/");
         groupHelper = new GroupHelper(wd);
         contactHelper = new ContactHelper(wd);

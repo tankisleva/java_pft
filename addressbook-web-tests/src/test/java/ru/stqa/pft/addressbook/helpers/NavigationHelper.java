@@ -2,12 +2,12 @@ package ru.stqa.pft.addressbook.helpers;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
+
 
 /**
  * Created by oleg on 28.02.16.
  */
-public class NavigationHelper extends BaseHelper{
+public class NavigationHelper extends BaseHelper {
 
     public NavigationHelper(WebDriver wd) {
         super(wd);
@@ -15,11 +15,23 @@ public class NavigationHelper extends BaseHelper{
 
 
     public void gotoGroupPage() {
-       click(By.linkText("groups"));
+        if (isElementPresent(By.tagName("h1"))
+                && wd.findElement(By.tagName("h1")).getText().equals("Groups")
+                && isElementPresent(By.name("New"))) {
+            return;
+        }
+
+        click(By.linkText("groups"));
     }
 
 
     public void returnHome() {
+        if (isElementPresent(By.id("maintable")))
+        {
+            return;
+        }
+
         click(By.linkText("home"));
+
     }
 }
