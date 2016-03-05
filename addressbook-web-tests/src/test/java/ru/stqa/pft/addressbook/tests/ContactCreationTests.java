@@ -6,17 +6,11 @@ import ru.stqa.pft.addressbook.model.ContactData;
 public class ContactCreationTests extends TestBase {
 
 
-
     @Test
     public void testContactCreation() {
-        app.getContactHelper().initContactCreation();
-        app.getContactHelper().fillContactForm(new ContactData("oleg", "malyshev", "tanki_sleva", "wamba", "parkway yraeva", null,"test1"), true);
-        app.getContactHelper().submitContactCreation();
+        app.getContactHelper().createContact(new ContactData("oleg", "malyshev", "tanki_sleva", "wamba", "parkway yraeva", "79177121162", "test1"), true);
         app.getNavigationHelper().returnHome();
     }
-
-
-
 
 
 }
