@@ -1,7 +1,8 @@
 package ru.stqa.pft.addressbook.helpers;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.WebDriver;
+
 
 /**
  * Created by oleg on 28.02.16.
@@ -9,9 +10,9 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 public class BaseHelper {
 
 
-    private FirefoxDriver wd;
+    private WebDriver wd;
 
-    public BaseHelper(FirefoxDriver wd) {
+    public BaseHelper(WebDriver wd) {
         this.wd = wd;
     }
 
