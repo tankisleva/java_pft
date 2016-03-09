@@ -16,7 +16,7 @@ public class ContactData {
         this.company = company;
         this.homeadress = homeadress;
         this.mobilenumber = mobilenumber;
-        this.groupname =  groupname;
+        this.groupname = groupname;
     }
 
     public String getFirstname() {
