@@ -2,9 +2,14 @@ package ru.stqa.pft.addressbook.helpers;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.firefox.internal.Streams;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import ru.stqa.pft.addressbook.model.ContactData;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by oleg on 28.02.16.
@@ -46,8 +51,9 @@ public class ContactHelper extends BaseHelper {
     }
 
 
-    public void selectContact(){
-        click(By.name("selected[]"));
+    public void selectContact(int i){
+        wd.findElements(By.name("selected[]")).get(i).click();
+//        click(By.name("selected[]"));
     }
 
 
@@ -78,5 +84,27 @@ public class ContactHelper extends BaseHelper {
       initContactCreation();
        fillContactForm((contactData), g);
        submitContactCreation();
+    }
+
+
+    public List<ContactData> getContactList(){
+
+        WebElement table = wd.findElement(By.id("maintable"));
+        List<WebElement> rows = table.findElements(By.name("entry"));
+        List<ContactData> contacts =  new ArrayList<>();
+
+        for (WebElement row: rows)
+        {
+            String firstName = row.findElement(By.cssSelector("td:nth-child(2)")).getText();
+            String lastName = row.findElement(By.cssSelector("td:nth-child(3)")).getText();
+            int id = Integer.parseInt(row.findElement(By.tagName("input")).getAttribute("value"));
+            ContactData contact = new ContactData(firstName,lastName,null,null,null,null,null,id);
+            contact.setFirstname(lastName);
+            contact.setLastname(firstName);
+            contacts.add(contact);
+        }
+
+        return contacts;
+
     }
 }
