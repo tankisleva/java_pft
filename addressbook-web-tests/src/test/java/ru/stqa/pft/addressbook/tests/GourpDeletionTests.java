@@ -14,9 +14,9 @@ public class GourpDeletionTests extends TestBase {
     @Test
     public void testGroupDeletion() {
         app.getNavigationHelper().gotoGroupPage();
-        List<GroupData> before = app.getGroupHelper().getGroupList();
         if (!app.getGroupHelper().isThereGroup())
         {app.getGroupHelper().createGroup(new GroupData("test", "test2", null));}
+        List<GroupData> before = app.getGroupHelper().getGroupList();
         app.getGroupHelper().selectGroup(before.size()-1);
         app.getGroupHelper().deleteSelectionGroups();
         app.getGroupHelper().returnToGroupPage();

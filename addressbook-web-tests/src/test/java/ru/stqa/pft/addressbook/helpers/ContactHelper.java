@@ -3,7 +3,6 @@ package ru.stqa.pft.addressbook.helpers;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.firefox.internal.Streams;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import ru.stqa.pft.addressbook.model.ContactData;
@@ -95,8 +94,9 @@ public class ContactHelper extends BaseHelper {
 
         for (WebElement row: rows)
         {
-            String firstName = row.findElement(By.cssSelector("td:nth-child(2)")).getText();
-            String lastName = row.findElement(By.cssSelector("td:nth-child(3)")).getText();
+            List<WebElement> cells = row.findElements(By.tagName("td"));
+            String firstName = cells.get(1).getText();
+            String lastName = cells.get(2).getText();
             int id = Integer.parseInt(row.findElement(By.tagName("input")).getAttribute("value"));
             ContactData contact = new ContactData(firstName,lastName,null,null,null,null,null,id);
             contact.setFirstname(lastName);
