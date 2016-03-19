@@ -21,8 +21,13 @@ public class ContactModificationTests extends TestBase {
         }
         List<ContactData> before = app.getContactHelper().getContactList();
         app.getContactHelper().selectContact(before.size()-1);
-        app.getContactHelper().editSelectionContacts();
-        ContactData modifyContact = new ContactData("denis", "dmidrieev", "dridly", "mvideo", "pervomayskaya street", "+79177121162", null);
+//        try {
+//            Thread.sleep(5000);
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        }
+        app.getContactHelper().editSelectionContacts(before.size()-1);
+        ContactData modifyContact = new ContactData("denis", "dmidrieev", "dridly", "mvideo", "pervomayskaya street", "+79177121162", null, before.get(before.size()-1).getId());
         app.getContactHelper().fillContactForm(modifyContact, false);
         app.getContactHelper().updateContact();
         app.getNavigationHelper().returnHome();

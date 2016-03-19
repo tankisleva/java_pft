@@ -60,8 +60,8 @@ public class ContactHelper extends BaseHelper {
         click(By.cssSelector("input[value='Delete']"));
     }
 
-    public void editSelectionContacts(){
-        click(By.cssSelector("img[alt='Edit']"));
+    public void editSelectionContacts(int i){
+        wd.findElements(By.name("entry")).get(i).findElement(By.cssSelector("img[alt='Edit']")).click();
     }
 
     public void deleteContacct(){
