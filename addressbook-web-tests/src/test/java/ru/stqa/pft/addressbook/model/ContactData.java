@@ -3,34 +3,13 @@ package ru.stqa.pft.addressbook.model;
 public class ContactData {
     private  String firstname;
     private  String lastname;
-    private final String username;
-    private final String company;
-    private final String homeadress;
-    private final String mobilenumber;
-    private final String groupname;
-    private int id;
+    private  String username;
+    private  String company;
+    private  String homeadress;
+    private  String mobilenumber;
+    private  String groupname;
+    private int id = Integer.MAX_VALUE;
 
-    public ContactData(String firstname, String lastname, String username, String company, String homeadress, String mobilenumber, String groupname,int id) {
-        this.firstname = firstname;
-        this.lastname = lastname;
-        this.username = username;
-        this.company = company;
-        this.homeadress = homeadress;
-        this.mobilenumber = mobilenumber;
-        this.groupname = groupname;
-        this.id = Integer.MAX_VALUE;
-    }
-
-
-    public ContactData(String firstname, String lastname, String username, String company, String homeadress, String mobilenumber, String groupname) {
-        this.firstname = firstname;
-        this.lastname = lastname;
-        this.username = username;
-        this.company = company;
-        this.homeadress = homeadress;
-        this.mobilenumber = mobilenumber;
-        this.groupname = groupname;
-    }
 
     public String getFirstname() {
         return firstname;
@@ -64,16 +43,44 @@ public class ContactData {
         return id;
     }
 
-    public void setId(int id) {
+    public ContactData withId(int id) {
         this.id = id;
+        return this;
     }
 
-    public void setLastname(String lastname) {
-        this.lastname = lastname;
-    }
-
-    public void setFirstname(String firstname) {
+    public ContactData withFirstname(String firstname) {
         this.firstname = firstname;
+        return this;
+    }
+
+    public ContactData withGroupname(String groupname) {
+        this.groupname = groupname;
+        return this;
+    }
+
+    public ContactData withMobilenumber(String mobilenumber) {
+        this.mobilenumber = mobilenumber;
+        return this;
+    }
+
+    public ContactData withHomeadress(String homeadress) {
+        this.homeadress = homeadress;
+        return this;
+    }
+
+    public ContactData withCompany(String company) {
+        this.company = company;
+        return this;
+    }
+
+    public ContactData withUsername(String username) {
+        this.username = username;
+        return this;
+    }
+
+    public ContactData withLastname(String lastname) {
+        this.lastname = lastname;
+        return this;
     }
 
     @Override

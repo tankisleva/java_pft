@@ -1,11 +1,11 @@
 package ru.stqa.pft.addressbook.tests;
 
 import org.testng.Assert;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import ru.stqa.pft.addressbook.model.GroupData;
 
 import java.util.Comparator;
-import java.util.HashSet;
 import java.util.List;
 
 /**
@@ -13,22 +13,24 @@ import java.util.List;
  */
 public class GroupModificationTests extends TestBase {
 
+    @BeforeMethod
+    public void ensurePreconditions(){
+        app.goTo().groupPage();
+        if (app.group().list().size() == 0)
+        {app.group().create(new GroupData().withName("test").withHeader("test2").withFooter(null));}
+    }
+
+
 
     @Test
     public void testGroupModification()  {
-        app.getNavigationHelper().gotoGroupPage();
-        if (!app.getGroupHelper().isThereGroup())
-        {app.getGroupHelper().createGroup(new GroupData("test", "test2", null));}
-        List<GroupData> before =  app.getGroupHelper().getGroupList();
-        app.getGroupHelper().selectGroup(before.size()-1);
-        app.getGroupHelper().editSelectionGroups();
-        GroupData group = new GroupData("test8", "test12", "test45", before.get(before.size()-1).getId());
-        app.getGroupHelper().fillGroupForm(group);
-        app.getGroupHelper().updateGroup();
-        app.getGroupHelper().returnToGroupPage();
-        List<GroupData> after =  app.getGroupHelper().getGroupList();
+        List<GroupData> before =  app.group().list();
+        int index = before.size()-1;
+        GroupData group = new GroupData().withName("tes8").withHeader("test12").withFooter("test45").withId(before.get(index).getId());
+        app.group().modify(index, group);
+        List<GroupData> after =  app.group().list();
         Assert.assertEquals(after.size(),before.size());
-        before.remove(before.size()-1);
+        before.remove(index);
         before.add(group);
         Comparator<? super GroupData> byId = (g1,g2) -> Integer.compare(g1.getId(),g2.getId());
         before.sort(byId);
@@ -36,4 +38,6 @@ public class GroupModificationTests extends TestBase {
         Assert.assertEquals(before,after);
 //        Assert.assertEquals(new HashSet<Object>(before),new HashSet<Object>(after));
     }
+
+
 }
