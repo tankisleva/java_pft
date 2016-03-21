@@ -6,6 +6,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import ru.stqa.pft.addressbook.model.ContactData;
+import ru.stqa.pft.addressbook.model.Contacts;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -140,11 +141,32 @@ public class ContactHelper extends BaseHelper {
     }
 
 
-    public Set<ContactData> all(){
+//    public Set<ContactData> all(){
+//
+//        WebElement table = wd.findElement(By.id("maintable"));
+//        List<WebElement> rows = table.findElements(By.name("entry"));
+//        Set<ContactData> contacts =  new HashSet<>();
+//
+//        for (WebElement row: rows)
+//        {
+//            List<WebElement> cells = row.findElements(By.tagName("td"));
+//            String firstName = cells.get(1).getText();
+//            String lastName = cells.get(2).getText();
+//            int id = Integer.parseInt(row.findElement(By.tagName("input")).getAttribute("value"));
+//            contacts.add(new ContactData().withFirstname(lastName).withLastname(firstName).withId(id));
+//        }
+//
+//        return contacts;
+//
+//    }
+
+
+
+    public Contacts all(){
 
         WebElement table = wd.findElement(By.id("maintable"));
         List<WebElement> rows = table.findElements(By.name("entry"));
-        Set<ContactData> contacts =  new HashSet<>();
+        Contacts contacts =  new Contacts();
 
         for (WebElement row: rows)
         {
