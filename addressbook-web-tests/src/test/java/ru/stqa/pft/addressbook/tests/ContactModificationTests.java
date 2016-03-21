@@ -35,6 +35,7 @@ public class ContactModificationTests extends TestBase {
                 .withFirstname("Denis").withLastname("Dmitriev").withMobilenumber("79135356446");
         app.contact().modify(contact, false);
         app.goTo().home();
+        assertThat(app.contact().count(),equalTo(before.size()));
 //        List<ContactData> after = app.contact().list();
 //        Set<ContactData> after = app.contact().all();
         Contacts after = app.contact().all();
@@ -45,7 +46,7 @@ public class ContactModificationTests extends TestBase {
 //        before.sort(byId);
 //        after.sort(byId);
 //        Assert.assertEquals(after,before);
-        assertThat(after.size(),equalTo(before.size()));
+//        assertThat(after.size(),equalTo(before.size()));
         assertThat(after,equalTo(before.withOut(modifyContact).withAdded(contact)));
     }
 

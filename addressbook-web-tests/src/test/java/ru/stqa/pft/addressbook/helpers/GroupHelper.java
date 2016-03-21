@@ -44,6 +44,10 @@ public class GroupHelper extends BaseHelper {
 //        click(By.name("selected[]"));
     }
 
+    public int count(){
+        return wd.findElements(By.name("selected[]")).size();
+    }
+
     private void selectGroupById(int id) {
         wd.findElement(By.cssSelector("input[value='"+id+"']")).click();
 

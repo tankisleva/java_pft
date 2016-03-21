@@ -23,10 +23,11 @@ public class ContactCreationTests extends TestBase {
         app.contact().create(contact, true);
         app.goTo().home();
 //        Set<ContactData> after = app.contact().all();
+        assertThat(app.contact().count(),equalTo(before.size()+1));
         Contacts after = app.contact().all();
 //        List<ContactData> after = app.contact().list();
 //        Assert.assertEquals(after.size(), before.size() + 1);
-        assertThat(after.size(),equalTo(before.size()+1));
+//        assertThat(after.size(),equalTo(before.size()+1));
 //        contact.withId(after.stream().mapToInt((c)->c.getId()).max().getAsInt());
 //        before.add(contact);
 //        Comparator<? super ContactData> byId = (c1, c2) -> Integer.compare(c1.getId(), c2.getId());

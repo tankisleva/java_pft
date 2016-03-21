@@ -31,9 +31,10 @@ public class GourpDeletionTests extends TestBase {
         app.group().delete(deleteGroup);
 //        List<GroupData> after = app.group().list();
 //        Set<GroupData> after = app.group().all();
+        assertThat(app.group().count(),equalTo(before.size()-1));
         Groups after = app.group().all();
 //        Assert.assertEquals(after.size(),before.size()-1);
-        assertThat(after.size(),equalTo(before.size()-1));
+//        assertThat(after.size(),equalTo(before.size()-1));
 //        before.remove(deleteGroup);
         assertThat(after,equalTo(before.withOut(deleteGroup)));
 //        for (int i = 0; i < after.size(); i++)
