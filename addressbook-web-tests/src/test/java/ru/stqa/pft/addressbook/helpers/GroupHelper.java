@@ -6,7 +6,9 @@ import org.openqa.selenium.WebElement;
 import ru.stqa.pft.addressbook.model.GroupData;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 /**
  * Created by oleg on 28.02.16.
@@ -41,8 +43,25 @@ public class GroupHelper extends BaseHelper {
 //        click(By.name("selected[]"));
     }
 
+    private void selectGroupById(int id) {
+        wd.findElement(By.cssSelector("input[value='"+id+"']"));
+
+    }
+
     public List <GroupData> list(){
         List <GroupData> groups = new ArrayList<>();
+        List <WebElement> elements  = wd.findElements(By.cssSelector("span.group"));
+        for (WebElement element : elements){
+            String name = element.getText();
+            int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
+            groups.add(new GroupData().withName(name).withHeader(null).withFooter(null).withId(id));
+        }
+        return groups;
+    }
+
+
+    public Set<GroupData> all(){
+        Set <GroupData> groups = new HashSet<>();
         List <WebElement> elements  = wd.findElements(By.cssSelector("span.group"));
         for (WebElement element : elements){
             String name = element.getText();
@@ -82,8 +101,8 @@ public class GroupHelper extends BaseHelper {
 
 
 
-    public void modify(int index, GroupData group) {
-        selectGroup(index);
+    public void modify(GroupData group) {
+        selectGroupById(group.getId());
        editSelectionGroups();
         fillGroupForm(group);
         updateGroup();
@@ -95,6 +114,13 @@ public class GroupHelper extends BaseHelper {
         selectGroup(index);
        deleteSelectionGroups();
        returnToGroupPage();
+    }
+
+
+    public void delete(GroupData group) {
+        selectGroupById(group.getId());
+        deleteSelectionGroups();
+        returnToGroupPage();
     }
 
 

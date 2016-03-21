@@ -4,9 +4,11 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import ru.stqa.pft.addressbook.model.ContactData;
+import ru.stqa.pft.addressbook.model.GroupData;
 
 import java.util.Comparator;
 import java.util.List;
+import java.util.Set;
 
 /**
  * Created by oleg on 28.02.16.
@@ -26,20 +28,21 @@ public class ContactModificationTests extends TestBase {
 
     @Test
     public void testContactModification() {
-
-        List<ContactData> before = app.contact().list();
-        int index = before.size()-1;
-        ContactData modifyContact = new ContactData().withId(before.get(before.size()-1).getId())
+//        List<ContactData> before = app.contact().list();
+        Set<ContactData> before = app.contact().all();
+//        int index = before.size()-1;
+        ContactData modifyContact = before.iterator().next();
+        ContactData contact = new ContactData().withId(modifyContact.getId())
                 .withFirstname("Denis").withLastname("Dmitriev").withMobilenumber("79135356446");
-        app.contact().modify(index, modifyContact, false);
+        app.contact().modify(contact, false);
         app.goTo().home();
         List<ContactData> after = app.contact().list();
         Assert.assertEquals(after.size(),before.size());
-        before.remove(before.size()-1);
-        before.add(modifyContact);
-        Comparator<? super ContactData> byId =  (c1, c2) -> Integer.compare(c1.getId(),c2.getId());
-        before.sort(byId);
-        after.sort(byId);
+        before.remove(modifyContact);
+        before.add(contact);
+//        Comparator<? super ContactData> byId =  (c1, c2) -> Integer.compare(c1.getId(),c2.getId());
+//        before.sort(byId);
+//        after.sort(byId);
         Assert.assertEquals(after,before);
     }
 
