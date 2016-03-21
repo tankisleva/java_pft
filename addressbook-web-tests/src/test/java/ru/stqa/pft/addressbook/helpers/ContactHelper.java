@@ -58,7 +58,7 @@ public class ContactHelper extends BaseHelper {
     }
 
     public void selectContactById(int id){
-        wd.findElement(By.cssSelector("input[value='"+id+"']"));
+        wd.findElement(By.cssSelector("input[value='"+id+"']")).click();
 //        click(By.name("selected[]"));
     }
 
@@ -72,7 +72,7 @@ public class ContactHelper extends BaseHelper {
     }
 
     public void editSelectionContactById(int id){
-        wd.findElement(By.cssSelector("a[href='edit.php?id="+id+"']"));
+        wd.findElement(By.cssSelector("a[href='edit.php?id="+id+"']")).click();
     }
 
 
@@ -99,7 +99,6 @@ public class ContactHelper extends BaseHelper {
 
 
     public void modify(ContactData contact,boolean c) {
-        selectContactById(contact.getId());
         editSelectionContactById(contact.getId());
         fillContactForm((contact), c);
         updateContact();
@@ -117,6 +116,7 @@ public class ContactHelper extends BaseHelper {
         selectContactById(contact.getId());
         deleteContacct();
         isAlertPresent();
+        wd.switchTo().alert().accept();
     }
 
 

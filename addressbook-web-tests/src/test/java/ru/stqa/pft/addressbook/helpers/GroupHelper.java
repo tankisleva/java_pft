@@ -44,7 +44,7 @@ public class GroupHelper extends BaseHelper {
     }
 
     private void selectGroupById(int id) {
-        wd.findElement(By.cssSelector("input[value='"+id+"']"));
+        wd.findElement(By.cssSelector("input[value='"+id+"']")).click();
 
     }
 

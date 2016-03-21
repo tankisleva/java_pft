@@ -33,11 +33,6 @@ public class ContactDeletionTests extends TestBase {
         ContactData deleteContact =  before.iterator().next();
 //        int index = before.size()-1;
         app.contact().delete(deleteContact);
-        try {
-            Thread.sleep(5000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
         app.goTo().home();
 //        List<ContactData> after = app.contact().list();
         Set<ContactData> after = app.contact().all();
