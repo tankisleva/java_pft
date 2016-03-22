@@ -7,7 +7,12 @@ public class ContactData {
     private  String company;
     private  String homeadress;
     private  String mobilenumber;
+    private  String homenumber;
+    private  String worknumber;
     private  String groupname;
+    private  String email;
+    private  String email1;
+    private  String email2;
     private int id = Integer.MAX_VALUE;
 
 
@@ -35,8 +40,31 @@ public class ContactData {
         return mobilenumber;
     }
 
+    public String getHomeNumber() {
+        return homenumber;
+    }
+
+    public String getWorkNumber() {
+        return worknumber;
+    }
+
     public String getGroupname() {
         return groupname;
+    }
+
+
+    public String getEmail() {
+        return email;
+    }
+
+    public String getEmail1() {
+        return email1;
+    }
+
+
+
+    public String getEmail2() {
+        return email2;
     }
 
     public int getId() {
@@ -63,6 +91,16 @@ public class ContactData {
         return this;
     }
 
+    public ContactData withHomeNumber(String homenumber) {
+        this.homenumber = homenumber;
+        return this;
+    }
+
+    public ContactData withWorkNumber(String worknumber) {
+        this.worknumber = worknumber;
+        return this;
+    }
+
     public ContactData withHomeadress(String homeadress) {
         this.homeadress = homeadress;
         return this;
@@ -82,6 +120,23 @@ public class ContactData {
         this.lastname = lastname;
         return this;
     }
+
+
+    public ContactData withEmail(String email) {
+        this.email = email;
+        return this;
+    }
+
+    public ContactData withEmail1(String email1) {
+        this.email1 = email1;
+        return this;
+    }
+
+    public ContactData withtEmail2(String email2) {
+        this.email2 = email2;
+        return this;
+    }
+
 
     @Override
     public boolean equals(Object o) {
