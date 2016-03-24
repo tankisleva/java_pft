@@ -9,9 +9,7 @@ import ru.stqa.pft.addressbook.model.ContactData;
 import ru.stqa.pft.addressbook.model.Contacts;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 /**
  * Created by oleg on 28.02.16.
@@ -199,9 +197,11 @@ public class ContactHelper extends BaseHelper {
 
 
     public ContactData infoFromEditForm(ContactData contact) {
-        initCintactModificationById(contact.getId());
+        initContactModificationById(contact.getId());
         String firstname = wd.findElement(By.name("firstname")).getAttribute("value");
         String lastname = wd.findElement(By.name("lastname")).getAttribute("value");
+        String nickname = wd.findElement(By.name("nickname")).getAttribute("value");
+        String company = wd.findElement(By.name("company")).getAttribute("value");
         String homePhone = wd.findElement(By.name("home")).getAttribute("value");
         String mobilePhone = wd.findElement(By.name("mobile")).getAttribute("value");
         String workPhone = wd.findElement(By.name("work")).getAttribute("value");
@@ -211,15 +211,31 @@ public class ContactHelper extends BaseHelper {
         String address = wd.findElement(By.name("address")).getAttribute("value");
         wd.navigate().back();
         return new ContactData().withId(contact.getId()).withHomeNumber(homePhone).withMobilenumber(mobilePhone).
-                withWorkNumber(workPhone).withEmail(email).withEmail1(email2).withtEmail2(email3).withHomeadress(address);
+                withWorkNumber(workPhone).withEmail(email).withEmail1(email2).withtEmail2(email3).withHomeadress(address)
+                .withCompany(company).withFirstname(firstname).withLastname(lastname).withUsername(nickname);
+
+    }
+
+    public String infoDetailsContact(ContactData contact) {
+        initContactDetailsById(contact.getId());
+        return wd.findElement(By.id("content")).getText();
+
+
 
     }
 
 
-    private void initCintactModificationById(int id){
+    private void initContactModificationById(int id){
         WebElement checkbox = wd.findElement(By.cssSelector(String.format("input[value='%s']",id)));
         WebElement row = checkbox.findElement(By.xpath("./../.."));
         List<WebElement> cells = row.findElements(By.tagName("td"));
         cells.get(7).findElement(By.tagName("a")).click();
+    }
+
+    private void initContactDetailsById(int id){
+        WebElement checkbox = wd.findElement(By.cssSelector(String.format("input[value='%s']",id)));
+        WebElement row = checkbox.findElement(By.xpath("./../.."));
+        List<WebElement> cells = row.findElements(By.tagName("td"));
+        cells.get(6).findElement(By.tagName("a")).click();
     }
 }
