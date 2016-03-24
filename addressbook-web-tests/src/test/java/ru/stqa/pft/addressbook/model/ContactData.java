@@ -13,9 +13,17 @@ public class ContactData {
     private  String email;
     private  String email1;
     private  String email2;
+    private  String allPhones;
+    private String allEmails;
     private int id = Integer.MAX_VALUE;
 
+    public String getAllPhones() {
+        return allPhones;
+    }
 
+    public String getAllEmails() {
+        return allEmails;
+    }
     public String getFirstname() {
         return firstname;
     }
@@ -134,6 +142,18 @@ public class ContactData {
 
     public ContactData withtEmail2(String email2) {
         this.email2 = email2;
+        return this;
+    }
+
+
+    public ContactData withAllPhones(String allPhones) {
+        this.allPhones = allPhones;
+        return this;
+    }
+
+
+    public ContactData withAllEmails(String allEmails) {
+        this.allEmails = allEmails;
         return this;
     }
 

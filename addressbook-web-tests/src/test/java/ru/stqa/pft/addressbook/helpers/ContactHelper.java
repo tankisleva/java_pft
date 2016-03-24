@@ -32,10 +32,12 @@ public class ContactHelper extends BaseHelper {
         type(By.name("mobile"),contactData.getMobilenumber());
         if (creation) {
             if (isElementPresent(By.name("new_group"))) {
-                new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroupname());
-            }
+                    new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroupname());
 
+            }
         }
+
+
         else {
             Assert.assertFalse(isElementPresent(By.name("new_group")));
         }
@@ -179,10 +181,12 @@ public class ContactHelper extends BaseHelper {
             List<WebElement> cells = row.findElements(By.tagName("td"));
             String firstName = cells.get(2).getText();
             String lastName = cells.get(1).getText();
-            String[] phones = cells.get(5).getText().split("\n");
+            String allPhones = cells.get(5).getText();
+            String allEmails = cells.get(4).getText();
+            String address = cells.get(3).getText();
             int id = Integer.parseInt(row.findElement(By.tagName("input")).getAttribute("value"));
             contactCache.add(new ContactData().withFirstname(firstName).withLastname(lastName).withId(id)
-                    .withMobilenumber(phones[1]).withHomeNumber(phones[0]).withWorkNumber(phones[2]));
+                    .withAllPhones(allPhones).withAllEmails(allEmails).withHomeadress(address));
         }
 
         return new Contacts(contactCache);
@@ -202,18 +206,18 @@ public class ContactHelper extends BaseHelper {
         String mobilePhone = wd.findElement(By.name("mobile")).getAttribute("value");
         String workPhone = wd.findElement(By.name("work")).getAttribute("value");
         String email = wd.findElement(By.name("email")).getAttribute("value");
-        String email1 = wd.findElement(By.name("email1")).getAttribute("value");
         String email2 = wd.findElement(By.name("email2")).getAttribute("value");
+        String email3 = wd.findElement(By.name("email3")).getAttribute("value");
         String address = wd.findElement(By.name("address")).getAttribute("value");
         wd.navigate().back();
         return new ContactData().withId(contact.getId()).withHomeNumber(homePhone).withMobilenumber(mobilePhone).
-                withWorkNumber(workPhone).withEmail(email).withEmail1(email1).withtEmail2(email2).withHomeadress(address);
+                withWorkNumber(workPhone).withEmail(email).withEmail1(email2).withtEmail2(email3).withHomeadress(address);
 
     }
 
 
     private void initCintactModificationById(int id){
-        WebElement checkbox = wd.findElement(By.cssSelector(String.format("input[value='&s']",id)));
+        WebElement checkbox = wd.findElement(By.cssSelector(String.format("input[value='%s']",id)));
         WebElement row = checkbox.findElement(By.xpath("./../.."));
         List<WebElement> cells = row.findElements(By.tagName("td"));
         cells.get(7).findElement(By.tagName("a")).click();
