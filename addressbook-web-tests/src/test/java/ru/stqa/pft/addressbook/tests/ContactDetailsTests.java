@@ -23,6 +23,15 @@ public class ContactDetailsTests extends TestBase {
 
     }
 
+
+    private String mergeFirstNameLastName(ContactData contact) {
+        return Arrays.asList(contact.getFirstname(),contact.getLastname())
+                .stream()
+                .filter((s)->!s.equals(""))
+                .map(ContactDetailsTests::cleaned)
+                .collect(Collectors.joining(" "));
+    }
+
     private String mergePersonalData(ContactData contact) {
         return Arrays.asList(mergeFirstNameLastName(contact),contact.getUsername(),contact.getCompany(),contact.getHomeadress())
                 .stream()
@@ -53,13 +62,6 @@ public class ContactDetailsTests extends TestBase {
                 .collect(Collectors.joining("\n"));
     }
 
-    private String mergeFirstNameLastName(ContactData contact) {
-        return Arrays.asList(contact.getFirstname(),contact.getLastname())
-                .stream()
-                .filter((s)->!s.equals(""))
-                .map(ContactDetailsTests::cleaned)
-                .collect(Collectors.joining(" "));
-    }
 
 
     private String mergeAll(ContactData contact) {
