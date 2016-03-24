@@ -22,7 +22,7 @@ public class ContactEmailTests extends TestBase {
         if (app.contact().all().size() == 0) {
             ContactData contact = new ContactData().withFirstname("Oleg").withLastname("Malyshev")
                     .withUsername("tanki_sleva").withCompany("wamba").withHomeadress("parkway yraeva")
-                    .withMobilenumber("79177121162").withGroupname("test1").withAllEmails("gsgss     fsf@mail.ru").withtEmail2("gdg490482dgdgdW@yandex.ru");
+                    .withMobilenumber("79177121162").withAllEmails("gsgss     fsf@mail.ru").withtEmail2("gdg490482dgdgdW@yandex.ru");
             app.contact().create(contact, true);
         }
     }
