@@ -21,26 +21,27 @@ public class ContactHelper extends BaseHelper {
     }
 
 
-    public void fillContactForm(ContactData contactData,boolean creation) {
-        type(By.name("firstname"),contactData.getFirstname());
-        type(By.name("lastname"),contactData.getLastname());
-        type(By.name("nickname"),contactData.getUsername());
-        type(By.name("company"),contactData.getCompany());
-        type(By.name("address"),contactData.getHomeadress());
-        type(By.name("mobile"),contactData.getMobilenumber());
+    public void fillContactForm(ContactData contactData, boolean creation) {
+        type(By.name("firstname"), contactData.getFirstname());
+        type(By.name("lastname"), contactData.getLastname());
+        type(By.name("nickname"), contactData.getUsername());
+        type(By.name("company"), contactData.getCompany());
+        type(By.name("address"), contactData.getHomeadress());
+        type(By.name("mobile"), contactData.getMobilenumber());
+        attach(By.name("photo"), contactData.getPhoto());
         if (creation) {
             if (isElementPresent(By.name("new_group"))) {
-                    new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroupname());
-
+                new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroupname());
             }
+
         }
 
-
-        else {
-            Assert.assertFalse(isElementPresent(By.name("new_group")));
-        }
+    else
+    {
+        Assert.assertFalse(isElementPresent(By.name("new_group")));
     }
 
+}
 
     public void submitContactCreation() {
         click(By.xpath("//div[@id='content']/form/input[21]"));
