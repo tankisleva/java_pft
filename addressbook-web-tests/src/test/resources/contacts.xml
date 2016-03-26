@@ -1,0 +1,37 @@
+<list>
+  <contact>
+    <firstname>tester 0</firstname>
+    <lastname>testerov 0</lastname>
+    <company>tesvovaya 0</company>
+    <homeadress>testovaya street 11-35  0</homeadress>
+    <email>test@mail.ru 0</email>
+  </contact>
+  <contact>
+    <firstname>tester 1</firstname>
+    <lastname>testerov 1</lastname>
+    <company>tesvovaya 1</company>
+    <homeadress>testovaya street 11-35  1</homeadress>
+    <email>test@mail.ru 1</email>
+  </contact>
+  <contact>
+    <firstname>tester 2</firstname>
+    <lastname>testerov 2</lastname>
+    <company>tesvovaya 2</company>
+    <homeadress>testovaya street 11-35  2</homeadress>
+    <email>test@mail.ru 2</email>
+  </contact>
+  <contact>
+    <firstname>tester 3</firstname>
+    <lastname>testerov 3</lastname>
+    <company>tesvovaya 3</company>
+    <homeadress>testovaya street 11-35  3</homeadress>
+    <email>test@mail.ru 3</email>
+  </contact>
+  <contact>
+    <firstname>tester 4</firstname>
+    <lastname>testerov 4</lastname>
+    <company>tesvovaya 4</company>
+    <homeadress>testovaya street 11-35  4</homeadress>
+    <email>test@mail.ru 4</email>
+  </contact>
+</list>
