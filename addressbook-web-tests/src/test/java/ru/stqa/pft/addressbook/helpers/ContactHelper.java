@@ -31,7 +31,12 @@ public class ContactHelper extends BaseHelper {
         attach(By.name("photo"), contactData.getPhoto());
         if (creation) {
             if (isElementPresent(By.name("new_group"))) {
-                new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroupname());
+                 if(contactData.getGroupname() != null){
+                new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroupname());}
+                else{
+                     new Select(wd.findElement(By.name("new_group"))).selectByVisibleText("[none]");
+
+                 }
             }
 
         }
