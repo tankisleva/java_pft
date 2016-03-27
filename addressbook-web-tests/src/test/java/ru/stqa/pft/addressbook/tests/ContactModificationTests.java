@@ -19,7 +19,7 @@ public class ContactModificationTests extends TestBase {
         if (app.contact().list().size() == 0) {
             ContactData contact = new ContactData().withFirstname("Oleg").withLastname("Malyshev")
                     .withUsername("tanki_sleva").withCompany("wamba").withHomeadress("parkway yraeva")
-                    .withMobilenumber("79177121162").withGroupname("test1");
+                    .withMobilenumber("79177121162");
             app.contact().create(contact, true);
         }
     }

@@ -9,7 +9,7 @@ import ru.stqa.pft.addressbook.helpers.ApplicationManager;
  * Created by oleg on 26.02.16.
  */
 public class TestBase {
-    protected static ApplicationManager app = new ApplicationManager(BrowserType.FIREFOX);
+    protected static ApplicationManager app = new ApplicationManager(System.getProperty("browser",BrowserType.FIREFOX));
 
 
 

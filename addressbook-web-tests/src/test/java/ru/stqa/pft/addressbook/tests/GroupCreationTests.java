@@ -92,7 +92,7 @@ public class GroupCreationTests extends TestBase {
     }
 
 
-    @Test(dataProvider = "validGroupsFromFileCvs")
+    @Test(dataProvider = "validGroupsFromFileCvs",enabled = false)
     public void testGroupCreationCsv(GroupData group) {
         app.goTo().groupPage();
         Groups before = app.group().all();
