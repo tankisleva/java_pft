@@ -21,5 +21,6 @@ public class CroupCreationTestsDb extends TestBase {
         assertThat(app.group().count(), equalTo(before.size()+1));
         Groups after = app.db().groups();
         assertThat(after, equalTo(before.withAdded(group.withId(after.stream().mapToInt((g)->g.getId()).max().getAsInt()))));
+        verifyGroupListInUi();
     }
 }
