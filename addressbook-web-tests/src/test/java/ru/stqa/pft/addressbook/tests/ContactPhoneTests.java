@@ -1,17 +1,13 @@
 package ru.stqa.pft.addressbook.tests;
 
-import org.hamcrest.MatcherAssert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import ru.stqa.pft.addressbook.model.ContactData;
-import ru.stqa.pft.addressbook.model.Contacts;
 
 import java.util.Arrays;
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 import static org.hamcrest.CoreMatchers.equalTo;
-import static org.hamcrest.MatcherAssert.*;
 import static org.hamcrest.MatcherAssert.assertThat;
 
 /**
@@ -26,7 +22,7 @@ public class ContactPhoneTests extends TestBase{
         if (app.contact().all().size() == 0) {
             ContactData contact = new ContactData().withFirstname("Oleg").withLastname("Malyshev")
                     .withUsername("tanki_sleva").withCompany("wamba").withHomeadress("parkway yraeva")
-                    .withMobilenumber("79177121162").withGroupname("test1").withAllEmails("gsgssfsf@mail.ru").withtEmail2("gdgdgdgdW@yandex.ru")
+                    .withMobilenumber("79177121162").withAllEmails("gsgssfsf@mail.ru").withtEmail2("gdgdgdgdW@yandex.ru")
                     .withMobilenumber("8593859385").withHomeNumber("gdgdgdgdgdg");
             app.contact().create(contact, true);
         }

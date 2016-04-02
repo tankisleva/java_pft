@@ -26,7 +26,6 @@ public class ContactModificationTestsDb extends TestBase {
 
     @Test
     public void testContactModificationDb() {
-
         Contacts before = app.db().contacts();
         ContactData modifyContact = before.iterator().next();
         ContactData contact = new ContactData().withId(modifyContact.getId())
@@ -37,4 +36,6 @@ public class ContactModificationTestsDb extends TestBase {
         Contacts after = app.db().contacts();
         assertThat(after,equalTo(before.withOut(modifyContact).withAdded(contact)));
     }
+
+
 }

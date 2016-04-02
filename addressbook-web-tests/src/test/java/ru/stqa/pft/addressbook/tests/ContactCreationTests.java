@@ -110,7 +110,7 @@ public class ContactCreationTests extends TestBase {
         Contacts before = app.contact().all();
         ContactData contact = new ContactData().withFirstname("Oleg").withLastname("Malyshev")
                 .withUsername("tanki_sleva").withCompany("wamba").withHomeadress("parkway yraeva")
-                .withMobilenumber("79177121162").withGroupname("test1");
+                .withMobilenumber("79177121162");
 
         app.contact().create(contact, true);
         app.goTo().home();
@@ -187,7 +187,7 @@ public class ContactCreationTests extends TestBase {
         app.goTo().home();
         File photo = new File("src/test/resources/tc508.jpg");
         app.contact().initContactCreation();
-        app.contact().fillContactForm(new ContactData().withFirstname("tester").withLastname("testerov").withGroupname("test1").withPhoto(photo),true);
+        app.contact().fillContactForm(new ContactData().withFirstname("tester").withLastname("testerov").withPhoto(photo),true);
         app.contact().submitContactCreation();
         app.goTo().home();
     }
