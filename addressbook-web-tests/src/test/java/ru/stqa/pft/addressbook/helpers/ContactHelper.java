@@ -99,6 +99,18 @@ public class ContactHelper extends BaseHelper {
         return isElementPresent(By.name("selected[]"));
     }
 
+
+    public void addToGroup(String groupName){
+        new Select(wd.findElement(By.name("to_group"))).selectByVisibleText(groupName);
+        click(By.name("add"));
+    }
+
+
+    public void removeFromGroup(String groupName){
+        new Select(wd.findElement(By.name("to_group"))).selectByVisibleText(groupName);
+        click(By.name("add"));
+    }
+
     public void create(ContactData contactData, boolean c) {
       initContactCreation();
        fillContactForm((contactData), c);

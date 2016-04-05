@@ -150,6 +150,10 @@ public class ContactData {
         return id;
     }
 
+    public Groups getGroups() {
+        return new Groups(groups);
+    }
+
     public ContactData withId(int id) {
         this.id = id;
         return this;
@@ -230,6 +234,11 @@ public class ContactData {
         return this;
     }
 
+    public ContactData inGroup(GroupData group) {
+        groups.add(group);
+        return this;
+    }
+
 
 
     @Override
@@ -245,9 +254,7 @@ public class ContactData {
 
     }
 
-    public Groups getGroups() {
-        return new Groups(groups);
-    }
+
 
     @Override
 
@@ -267,8 +274,5 @@ public class ContactData {
     }
 
 
-    public ContactData inGroup(GroupData group) {
-        groups.add(group);
-        return this;
-    }
+
 }
