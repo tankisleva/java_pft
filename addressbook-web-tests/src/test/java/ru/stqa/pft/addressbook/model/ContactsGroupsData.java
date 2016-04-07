@@ -3,10 +3,7 @@ package ru.stqa.pft.addressbook.model;
 
 
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 /**
  * Created by oleg on 05.04.16.
@@ -21,9 +18,10 @@ public class ContactsGroupsData {
     @Id
     private int contactId;
 
-
     @Column(name = "group_id")
     private int groupId;
+
+
 
     public int getContactId() {
         return contactId;
@@ -32,6 +30,8 @@ public class ContactsGroupsData {
     public int getGroupId() {
         return groupId;
     }
+
+
 
     public ContactsGroupsData withContactId(int contactId) {
         this.contactId = contactId;
@@ -43,6 +43,7 @@ public class ContactsGroupsData {
         return this;
     }
 
+
     @Override
     public String toString() {
         return "ContactsGroupsData{" +
@@ -50,6 +51,8 @@ public class ContactsGroupsData {
                 ", groupId=" + groupId +
                 '}';
     }
+
+
 
 
     @Override

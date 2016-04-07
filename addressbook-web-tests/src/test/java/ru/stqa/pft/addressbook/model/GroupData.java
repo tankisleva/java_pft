@@ -14,6 +14,7 @@ import java.util.Set;
 @Table(name = "group_list")
 public class GroupData {
 
+//    @OneToOne(mappedBy = "groupName")
     @Expose
     @Column(name = "group_name")
     private  String name;
