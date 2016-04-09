@@ -6,6 +6,7 @@ import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 
 import java.io.File;
+import java.util.Random;
 
 
 /**
@@ -72,6 +73,8 @@ public class BaseHelper {
     protected void click(By locator) {
         wd.findElement(locator).click();
     }
+
+
 
 
 }

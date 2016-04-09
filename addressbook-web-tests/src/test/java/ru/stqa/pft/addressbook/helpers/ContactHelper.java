@@ -7,9 +7,12 @@ import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import ru.stqa.pft.addressbook.model.ContactData;
 import ru.stqa.pft.addressbook.model.Contacts;
+import ru.stqa.pft.addressbook.model.GroupData;
+import ru.stqa.pft.addressbook.model.Groups;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 /**
  * Created by oleg on 28.02.16.
@@ -106,17 +109,20 @@ public class ContactHelper extends BaseHelper {
     }
 
 
-    public void removeFromGroup(String groupName, int id){
+    public void removeFromGroup(String groupName, String title) throws InterruptedException {
         new Select(wd.findElement(By.name("group"))).selectByVisibleText(groupName);
-        selectContactById(id);
+        Thread.sleep(1000);
+        selectByTittle(title);
         click(By.name("remove"));
     }
 
+    public void selectByTittle(String title){
+        wd.findElement(By.cssSelector("input[title='"+title+"']")).click();
 
-    public void removeFromGroup(String groupName){
-        new Select(wd.findElement(By.name("to_group"))).selectByVisibleText(groupName);
-        click(By.name("add"));
     }
+
+
+
 
     public void create(ContactData contactData, boolean c) {
       initContactCreation();
@@ -265,4 +271,5 @@ public class ContactHelper extends BaseHelper {
         List<WebElement> cells = row.findElements(By.tagName("td"));
         cells.get(6).findElement(By.tagName("a")).click();
     }
+
 }

@@ -18,6 +18,8 @@ import static org.hamcrest.MatcherAssert.assertThat;
 
 import java.lang.reflect.Method;
 import java.util.Arrays;
+import java.util.Random;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 /**
@@ -69,5 +71,25 @@ public class TestBase {
             withLastname(c.getLastname()).withHomeadress(c.getHomeadress()))
                     .collect(Collectors.toSet())));
         }
+    }
+
+
+
+    public String generateText(int Length) {
+
+        String[] lettersName = { "a", "b", "c", "d", "e", "f", "g", "h", "i",
+                "g", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u",
+                "v", "w", "x", "y", "z" };
+
+        Random rnd = new Random();
+
+        StringBuilder sb = new StringBuilder(Length);
+
+        for (int i = 0; i < Length; i++)
+            sb.append(lettersName[rnd.nextInt(lettersName.length)]);
+
+        return sb.toString();
+
+
     }
 }
