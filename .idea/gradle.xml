@@ -33,6 +33,22 @@
           </set>
         </option>
       </GradleProjectSettings>
+      <GradleProjectSettings>
+        <option name="createEmptyContentRootDirectories" value="true" />
+        <option name="distributionType" value="DEFAULT_WRAPPED" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/tests-mantis" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$/tests-mantis" />
+          </set>
+        </option>
+        <option name="useAutoImport" value="true" />
+        <option name="myModules">
+          <set>
+            <option value="$PROJECT_DIR$/tests-mantis" />
+          </set>
+        </option>
+      </GradleProjectSettings>
     </option>
   </component>
 </project>
