@@ -12,7 +12,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
  * Created by oleg on 06.04.16.
  */
 public class ContactsRemoveFromGroups extends TestBase {
-
+/* если есть контакты, которые не удалены из группы, я удаляю их, если таких контактов больше нет, то я добавляю контакт в группу и удаляю его.*/
 
     @BeforeMethod
     public void ensurePreconditions() {
