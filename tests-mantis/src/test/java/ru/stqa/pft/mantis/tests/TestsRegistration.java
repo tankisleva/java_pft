@@ -9,6 +9,6 @@ public class TestsRegistration extends TestBase {
 
     @Test
     public void testRegistration() {
-        app.registration().start();
+
     }
 }

@@ -5,8 +5,6 @@ package ru.stqa.pft.mantis.appmanager;
  */
 public class RegistrationHelper extends BaseHelper{
 
-    protected ApplicationManager app;
-
     public RegistrationHelper(ApplicationManager app) throws Exception{
         super(app);
     }
