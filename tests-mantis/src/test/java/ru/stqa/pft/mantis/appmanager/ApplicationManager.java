@@ -16,44 +16,57 @@ import java.util.concurrent.TimeUnit;
  */
 public class ApplicationManager {
 
-
-
-    WebDriver wd;
+    private WebDriver wd;
     private String browser;
     private  final Properties properties;
 
 
     public ApplicationManager(String browser) {
-
         this.browser = browser;
         properties = new Properties();
     }
 
 
 
-
     public void stop() {
+        if (wd != null) {
         wd.quit();
+        }
+    }
+
+    public String getProperty(String key) {
+        return properties.getProperty(key);
+    }
+
+    public HttpSession newSession(){
+        return new HttpSession(this);
     }
 
 
     public void init() throws IOException {
         String target = System.getProperty("target","local");
         properties.load(new FileReader(new File(String.format("src/test/resources/%s.properties",target))));
-        if (properties.getProperty("browser").equals("FIREFOX")) {
-            wd = new FirefoxDriver();
+    }
+
+
+    public WebDriver getWebDriver() throws Exception {
+
+        if (wd == null) {
+            if (properties.getProperty("browser").equals("FIREFOX")) {
+                wd = new FirefoxDriver();
 //        } else if (browser.equals(BrowserType.CHROME)) {
 //            wd = new ChromeDriver();
-        }
-        else if (properties.getProperty("browser").equals("CHROME")){
-            wd = new ChromeDriver();
-        } else {
-            wd = new InternetExplorerDriver();
-        }
+            }
+            else if (properties.getProperty("browser").equals("CHROME")){
+                wd = new ChromeDriver();
+            } else {
+                wd = new InternetExplorerDriver();
+            }
 
-        wd.manage().timeouts().implicitlyWait(Integer.parseInt(properties.getProperty("implicitlyWait")), TimeUnit.SECONDS);
-        wd.get(properties.getProperty("web.url"));
-
+            wd.manage().timeouts().implicitlyWait(Integer.parseInt(properties.getProperty("implicitlyWait")), TimeUnit.SECONDS);
+            wd.get(properties.getProperty("web.url"));
+        }
+        return wd;
     }
 
 
