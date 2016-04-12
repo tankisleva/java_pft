@@ -1,4 +1,4 @@
-package ru.stqa.pft.addressbook.helpers;
+package ru.stqa.pft.mantis.appmanager;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoAlertPresentException;
@@ -15,11 +15,12 @@ import java.io.File;
 public class BaseHelper {
 
 
-
+    protected ApplicationManager app;
     protected WebDriver wd;
 
-    public BaseHelper(WebDriver wd) {
-        this.wd = wd;
+    public BaseHelper(ApplicationManager app) throws Exception {
+        this.app = app;
+        this.wd = app.getDriver();
     }
 
     protected void type(By locator, String text) {
@@ -39,10 +40,10 @@ public class BaseHelper {
     protected void attach(By locator, File file) {
 
         if (file != null) {
-                wd.findElement(locator).sendKeys(file.getAbsolutePath());
-            }
-
+            wd.findElement(locator).sendKeys(file.getAbsolutePath());
         }
+
+    }
 
 
 

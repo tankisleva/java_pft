@@ -20,6 +20,8 @@ public class ApplicationManager {
     private String browser;
     private  final Properties properties;
     private FtpHelper ftp;
+    private RegistrationHelper registration;
+    private AuthorizationHelper authorization;
 
 
     public ApplicationManager(String browser) {
@@ -50,6 +52,20 @@ public class ApplicationManager {
         return ftp;
     }
 
+    public AuthorizationHelper authorization() throws Exception {
+        if (authorization == null) {
+            authorization = new AuthorizationHelper(this);
+        }
+        return  authorization;
+    }
+
+    public RegistrationHelper registration() throws Exception {
+        if (registration == null) {
+            registration = new RegistrationHelper(this);
+        }
+        return  registration;
+    }
+
 
 
     public void init() throws IOException {
@@ -58,7 +74,7 @@ public class ApplicationManager {
     }
 
 
-    public WebDriver getWebDriver() throws Exception {
+    public WebDriver getDriver() throws Exception {
 
         if (wd == null) {
             if (properties.getProperty("browser").equals("FIREFOX")) {
