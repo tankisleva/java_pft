@@ -18,6 +18,7 @@ public class TestChangePassword extends TestBase {
     @Test
     public void testChangePassword() throws Exception {
 
+        app.mail().waitForMail(2,10000);
     }
 
 
