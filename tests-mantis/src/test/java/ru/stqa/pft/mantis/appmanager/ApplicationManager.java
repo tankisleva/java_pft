@@ -19,6 +19,7 @@ public class ApplicationManager {
     private WebDriver wd;
     private String browser;
     private  final Properties properties;
+    private FtpHelper ftp;
 
 
     public ApplicationManager(String browser) {
@@ -41,6 +42,14 @@ public class ApplicationManager {
     public HttpSession newSession(){
         return new HttpSession(this);
     }
+
+    public FtpHelper ftp(){
+        if (ftp == null){
+            ftp = new FtpHelper(this);
+        }
+        return ftp;
+    }
+
 
 
     public void init() throws IOException {
