@@ -10,6 +10,7 @@ import java.io.IOException;
 import java.util.List;
 import java.util.stream.Collectors;
 
+
 /**
  * Created by oleg on 12.04.16.
  */
@@ -20,6 +21,7 @@ public class MailHelper  {
     public MailHelper(ApplicationManager app){
         this.app = app;
         wiser = new Wiser();
+        wiser.setPort(1026);
     }
 
 

@@ -98,7 +98,7 @@ public class ApplicationManager {
             }
 
             wd.manage().timeouts().implicitlyWait(Integer.parseInt(properties.getProperty("implicitlyWait")), TimeUnit.SECONDS);
-            wd.get(properties.getProperty("web.url"));
+            wd.get(properties.getProperty("web.baseUrl"));
         }
         return wd;
     }

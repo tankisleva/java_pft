@@ -2,10 +2,9 @@ package ru.stqa.pft.mantis.tests;
 
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+import ru.lanwen.verbalregex.VerbalExpression;
 import ru.stqa.pft.mantis.Model.MailMessage;
 
-import javax.mail.MessagingException;
-import java.io.IOException;
 import java.util.List;
 
 /**
@@ -20,9 +19,23 @@ public class TestsRegistration extends TestBase {
 
     @Test
     public void testRegistration() throws Exception {
-       app.registration().start("user2","user2@localhost.localdomain");
-       List<MailMessage> mailMessages =  app.mail().waitForMail(2,10000);
+        String email = "user3@localhost.localdomain";
+        String password = "password";
+        String user = "user3";
+        app.registration().start(user, email);
+        List<MailMessage> mailMessages =  app.mail().waitForMail(2,240000);
+        String confirmationLink = findConfirmationLink(mailMessages, email);
+        app.registration().finish(confirmationLink,password);
+        app.newSession().login(user,password);
+        app.newSession().isLoggedInAs(user);
 
+
+    }
+
+    private String findConfirmationLink(List<MailMessage> mailMessages, String email) {
+       MailMessage mailMessage = mailMessages.stream().filter((m)->m.to.equals(email)).findFirst().get();
+        VerbalExpression regex = VerbalExpression.regex().find("http://").nonSpace().oneOrMore().build();
+       return  regex.getText(mailMessage.text);
     }
 
 
