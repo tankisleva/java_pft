@@ -19,15 +19,15 @@ public class TestsRegistration extends TestBase {
 
     @Test
     public void testRegistration() throws Exception {
-        String email = "user3@localhost.localdomain";
-        String password = "password";
-        String user = "user3";
-        app.registration().start(user, email);
+//        String email = "user3@localhost.localdomain";
+//        String password = "password";
+//        String user = "user3";
+//        app.registration().start(user, email);
         List<MailMessage> mailMessages =  app.mail().waitForMail(2,240000);
-        String confirmationLink = findConfirmationLink(mailMessages, email);
-        app.registration().finish(confirmationLink,password);
-        app.newSession().login(user,password);
-        app.newSession().isLoggedInAs(user);
+       // String confirmationLink = findConfirmationLink(mailMessages, email);
+//        app.registration().finish(confirmationLink,password);
+//        app.newSession().login(user,password);
+//        app.newSession().isLoggedInAs(user);
 
 
     }
