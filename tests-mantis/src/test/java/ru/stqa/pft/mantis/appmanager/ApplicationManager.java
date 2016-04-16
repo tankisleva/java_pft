@@ -23,6 +23,8 @@ public class ApplicationManager {
     private RegistrationHelper registration;
     private AuthorizationHelper authorization;
     private MailHelper mailHelper;
+    private NavigationHelper navigationHelper;
+    private DbHelper dbHelper;
 
 
     public ApplicationManager(String browser) {
@@ -67,12 +69,23 @@ public class ApplicationManager {
         return  registration;
     }
 
+    public NavigationHelper goTo() throws Exception {
+        if (navigationHelper == null) {
+            navigationHelper = new NavigationHelper(this);
+        }
+        return  navigationHelper;
+    }
+
 
     public MailHelper mail() throws Exception {
         if (mailHelper == null) {
             mailHelper = new MailHelper(this);
         }
         return  mailHelper;
+    }
+
+    public DbHelper db() {
+        return dbHelper;
     }
 
 

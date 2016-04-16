@@ -21,7 +21,6 @@ public class MailHelper  {
     public MailHelper(ApplicationManager app){
         this.app = app;
         wiser = new Wiser();
-        wiser.setPort(61954);
     }
 
 
