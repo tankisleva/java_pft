@@ -6,6 +6,7 @@ import org.testng.annotations.Test;
 import ru.lanwen.verbalregex.VerbalExpression;
 import ru.stqa.pft.mantis.Model.MailMessage;
 import ru.stqa.pft.mantis.Model.UserData;
+import static org.testng.Assert.assertTrue;
 import ru.stqa.pft.mantis.Model.Users;
 
 import java.util.List;
@@ -35,8 +36,8 @@ public class TestChangePassword extends TestBase {
         List<MailMessage> mailMessages = app.mail().waitForMail(2,10000);
         String confirmationLink = findConfirmationLink(mailMessages, selectUser.getEmail());
         app.goTo().cheangePassword(confirmationLink,newPassword);
-        app.newSession().login(username,newPassword);
-        app.newSession().isLoggedInAs(username);
+        assertTrue(app.newSession().login(username,newPassword));
+        assertTrue(app.newSession().isLoggedInAs(username));
 
     }
 
