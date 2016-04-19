@@ -25,6 +25,7 @@ public class ApplicationManager {
     private MailHelper mailHelper;
     private NavigationHelper navigationHelper;
     private DbHelper dbHelper;
+    private SoapHelper soapHelper;
 
 
     public ApplicationManager(String browser) {
@@ -84,6 +85,14 @@ public class ApplicationManager {
         return  mailHelper;
     }
 
+
+    public SoapHelper soap() throws Exception {
+        if (soapHelper == null) {
+            soapHelper = new SoapHelper(this);
+        }
+        return  soapHelper;
+    }
+
     public DbHelper db() {
         return dbHelper;
     }
@@ -91,6 +100,7 @@ public class ApplicationManager {
 
 
     public void init() throws IOException {
+        dbHelper = new DbHelper();
         String target = System.getProperty("target","local");
         properties.load(new FileReader(new File(String.format("src/test/resources/%s.properties",target))));
     }
