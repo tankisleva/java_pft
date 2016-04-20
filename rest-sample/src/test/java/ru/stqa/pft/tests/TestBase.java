@@ -47,7 +47,7 @@ public class TestBase {
         return new Gson().fromJson(issues,new TypeToken<Set<Issue>>(){}.getType());
     }
 
-    
+
 
     protected Executor getExecutor() {
         return Executor.newInstance().auth("LSGjeU4yP1X493ud1hNniA==", "");
