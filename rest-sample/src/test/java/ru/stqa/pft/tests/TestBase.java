@@ -47,14 +47,7 @@ public class TestBase {
         return new Gson().fromJson(issues,new TypeToken<Set<Issue>>(){}.getType());
     }
 
-
-    protected Set<Issue> getHistoryIssues() throws IOException {
-        String json  =  getExecutor().execute(Request.Get("http://demo.bugify.com/api/issues.json"))
-                .returnContent().asString();
-        JsonElement parsed = new JsonParser().parse(json);
-        JsonElement issues = parsed.getAsJsonObject().get("issues");
-        return new Gson().fromJson(issues,new TypeToken<Set<Issue>>(){}.getType());
-    }
+    
 
     protected Executor getExecutor() {
         return Executor.newInstance().auth("LSGjeU4yP1X493ud1hNniA==", "");
