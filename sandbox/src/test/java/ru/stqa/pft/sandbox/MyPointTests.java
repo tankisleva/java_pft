@@ -22,6 +22,6 @@ public class MyPointTests {
     public void testDistanceCase2() {
         MyPoint p1 = new MyPoint(1.0, 3.0);
         MyPoint p2 = new MyPoint(11.5, 6.2);
-        Assert.assertEquals(p1.distance(p2), 10.97679370308106);
+        Assert.assertEquals(p1.distance(p2), 13.97679370308106);
     }
 }
